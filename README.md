@@ -11,7 +11,7 @@ An example of usage is installing private packages. My usual workflow consists o
     [private packages](https://docs.readthedocs.io/en/stable/guides/private-python-packages.html).
 1. The private package was manually removed from the `requirements.txt` and another `commit` was executed.
 
-This package was created to avoid this situation. Storing the private packages 
+This package was created to avoid this situation. Storing the private packages
 in a different file (e.g., `requirements-private.txt`), it removes the
 packages already presented inside `requirements-private.txt` from the `requirements.txt`
 avoiding the manual delete and the commit correcting this change.
@@ -22,5 +22,7 @@ Create a virtual environment and install the required packages with
 ```
 python3 -m venv .venv
 source .venv/bin/activate
+pip install wheel
 pip install -r requirements.txt
+pre-commit install
 ```
