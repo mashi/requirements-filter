@@ -13,9 +13,9 @@ jobs:
               pip install wheel
               pip install -r requirements.txt
               python -m build
-      # Persist the specified paths (workspace/echo-output) into the workspace for use in downstream job. 
+      # Persist the specified paths (workspace/echo-output) into the workspace for use in downstream job.
       - persist_to_workspace:
-          # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is 
+          # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is
           # taken to be the root directory of the workspace.
           root: .
           # Must be relative path from root
@@ -33,6 +33,7 @@ jobs:
       - run:
           name: pypi upload
           command: |
+              pip install wheel
               pip install -r requirements.txt
               python -m twine upload -u $PYPI_USER -p $PYPI_TOKEN dist/*
 
@@ -43,7 +44,7 @@ workflows:
       - build:
           filters:  # required since `deploy` has tag filters AND requires `build`
             tags:
-              only: /.*/      
+              only: /.*/
       - deploy:
           requires:
           - build
