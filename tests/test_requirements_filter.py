@@ -18,6 +18,22 @@ requirements_without_private = """flake8==3.9.0
 
 
 def write_file(filepath, filename, information):
+    """
+    Write a text file.
+
+    Used here to save known files to test the package behavior.
+
+    Parameters
+    ----------
+    filepath : str
+        Path where the file will be written.
+
+    filename : str
+        Name of the file.
+
+    information : str
+        Information to be written.
+    """
     with open(Path(f"{filepath}/{filename}"), "w") as file_object:
         file_object.write(information)
 
@@ -28,7 +44,6 @@ class RequirementsFilterTest(unittest.TestCase):
 
     def test_twofiles(self):
         with tempfile.TemporaryDirectory() as tp:
-            print(tp)
             write_file(tp, "requirements.txt", requirements)
             write_file(tp, "requirements-private.txt", requirements_private)
 
