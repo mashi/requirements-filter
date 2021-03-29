@@ -1,7 +1,7 @@
-if __name__ == "__main__":
-    with open("requirements.txt") as file_object:
+def rqf(file1="requirements.txt", file2="requirements-private.txt"):
+    with open(file1) as file_object:
         requirements = file_object.readlines()
-    with open("requirements-private.txt") as file_object:
+    with open(file2) as file_object:
         private_txt = file_object.readlines()
 
     private = []
@@ -18,6 +18,10 @@ if __name__ == "__main__":
             if package_equalequal not in private_set:
                 requirements_without_private.append(package)
 
-    with open("requirements.txt", "w") as file_save:
+    with open(file1, "w") as file_save:
         for line in requirements_without_private:
             file_save.write(line)
+
+
+if __name__ == "__main__":
+    rqf()
