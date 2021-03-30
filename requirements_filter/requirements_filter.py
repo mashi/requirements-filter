@@ -1,23 +1,25 @@
 # The exit(1) is used to indicate error in pre-commit
 NOT_OK = 1
-OK = 0
 
 
 def rqf(file1="requirements.txt", file2="requirements-private.txt"):
     requirements = open_file(file1)
     private_txt = open_file(file2)
 
-    private_set = create_set(private_txt)
+    at_sign_set = create_set(private_txt, "@")
 
-    requirements_without_private = remove_common_elements(
-        requirements, private_set
+    requirements_without_at_sign = remove_common_elements(
+        requirements, at_sign_set, "@"
+    )
+    requirements_without_equal_sign = remove_common_elements(
+        requirements_without_at_sign, at_sign_set, "=="
     )
 
     # the file1 will be overwritten
-    write_file(file1, requirements_without_private)
+    write_file(file1, requirements_without_equal_sign)
 
 
-def remove_common_elements(requirements, private_set):
+def remove_common_elements(requirements, private_set, delimiter="@"):
     """
     Remove the common elements between requirements and private_set.
 
@@ -34,11 +36,9 @@ def remove_common_elements(requirements, private_set):
     """
     requirements_without_private = []
     for package in requirements:
-        package_at_sign = package.split("@")[0].strip()
-        package_equalequal = package.split("==")[0].strip()
+        package_at_sign = package.split(delimiter)[0].strip()
         if package_at_sign not in private_set:
-            if package_equalequal not in private_set:
-                requirements_without_private.append(package)
+            requirements_without_private.append(package)
     return requirements_without_private
 
 
@@ -50,6 +50,11 @@ def open_file(filename):
     ----------
     filename : str
         Name of the file to be opened.
+
+    Returns
+    -------
+    list
+        List of strings with the packages names and versions.
     """
     try:
         with open(filename) as file_object:
@@ -60,24 +65,34 @@ def open_file(filename):
         exit(NOT_OK)
 
 
-def create_set(private_txt):
+def create_set(package_list, delimiter):
     """
     Create a set of packages to be excluded.
 
-    This function receives a string, takes the package name
-    and converts it to a set.
+    This function receives a list of strings, takes the packages' names
+    and transforms them to a set.
+
+    If the list contains packages with @ but the delimiter input is '==',
+    then the package is ignored.
 
     Parameters
     ----------
-    private_txt : str
-        String with the name and version of the packages.
+    package_list : list
+        List of strings with each element representing a package name
+        and version.
+
+    Returns
+    -------
+    set
+        Set with the package names.
     """
-    private = []
-    for line in private_txt:
-        package_name = line.split("@")
-        private.append(package_name[0].strip())
-    private_set = set(private)
-    return private_set
+    list_of_package_names = []
+    for package in package_list:
+        if delimiter in package:
+            package_name = package.split(delimiter)
+            list_of_package_names.append(package_name[0].strip())
+    package_set = set(list_of_package_names)
+    return package_set
 
 
 def write_file(file1, requirements_without_private):
