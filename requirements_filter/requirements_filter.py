@@ -122,4 +122,4 @@ def write_file(filename, information):
 
 
 if __name__ == "__main__":
-    rqf(file1="requirements.txt", file2="requirements-private.txt")
+    rqf()
