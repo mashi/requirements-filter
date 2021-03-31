@@ -1,18 +1,23 @@
+import click
+
 # The exit(1) is used to indicate error in pre-commit
 NOT_OK = 1
 
 
-def rqf(file1="requirements.txt", file2="requirements-private.txt"):
-    requirements = open_file(file1)
-    private_txt = open_file(file2)
+@click.command()
+@click.option("--filename1", default="requirements.txt")
+@click.option("--filename2", default="requirements-private.txt")
+def rqf(filename1, filename2):
+    requirements = open_file(filename1)
+    private_txt = open_file(filename2)
 
     at_sign_set = create_set(private_txt, "@")
     requirements_without_at_sign = remove_common_elements(
         requirements, at_sign_set
     )
 
-    # the file1 will be overwritten
-    write_file(file1, requirements_without_at_sign)
+    # the filename1 will be overwritten
+    write_file(filename1, requirements_without_at_sign)
 
 
 def remove_common_elements(package_list, remove_set):
@@ -117,4 +122,4 @@ def write_file(filename, information):
 
 
 if __name__ == "__main__":
-    rqf()
+    rqf(file1="requirements.txt", file2="requirements-private.txt")

@@ -1,0 +1,7 @@
+-   id: rqf
+    name: requirements filter
+    description: Removes private packages with @ from requirements file
+    entry: rqf
+    language: python
+    types: [yaml]
+    pass_filenames: false
