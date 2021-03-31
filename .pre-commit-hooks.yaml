@@ -3,5 +3,5 @@
     description: Removes private packages with @ from requirements file
     entry: rqf
     language: python
-    types: [yaml]
+    types: [text]
     pass_filenames: false
