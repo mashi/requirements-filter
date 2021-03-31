@@ -60,3 +60,8 @@ repos:
     hooks:
       - id: isort
         args: ["--profile", "black", "--filter-files"]
+
+  - repo: https://github.com/mashi/codecov-validator
+    rev: v1.0.0
+    hooks:
+      - id: ccv
