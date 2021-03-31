@@ -7,6 +7,8 @@
 # Description
 Removes private packages from a general `requirements.txt` file.
 
+
+## Usage
 An example of usage is installing private packages. My usual workflow consists of
 1. changes in the source code,
 1. `pip freeze > requirements.txt`
@@ -19,7 +21,18 @@ An example of usage is installing private packages. My usual workflow consists o
 This package was created to avoid this situation. Storing the private packages
 in a different file (e.g., `requirements-private.txt`), it removes the
 packages already presented inside `requirements-private.txt` from the `requirements.txt`
-avoiding the manual delete and the commit correcting this change.
+avoiding the manual deletion and the commit correcting the change.
+
+The recommended use is adding in the `.pre-commit-config.yaml` file
+```
+  - repo: https://github.com/mashi/requirements-filter
+    rev: v0.0.0  # replace by desired tag version
+    hooks:
+      - id: rqf
+        args: [--filename1, requirements.txt, --filename2, requirements-private.txt]  # example with arguments
+```
+
+In this way, the packages are checked before the `commit` and prevents the inclusion in the version control.
 
 
 ## Instructions (Development)

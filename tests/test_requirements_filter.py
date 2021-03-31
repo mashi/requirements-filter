@@ -2,6 +2,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from click.testing import CliRunner
+
 from requirements_filter import requirements_filter as rq
 from requirements_filter.requirements_filter import NOT_OK
 
@@ -44,13 +46,21 @@ class RequirementsFilterTest(unittest.TestCase):
         self.assertEqual(1, 1)
 
     def test_rqf_two_files(self):
+        runner = CliRunner()
         with tempfile.TemporaryDirectory() as tp:
             rq.write_file(f"{tp}/requirements.txt", requirements)
             rq.write_file(
                 f"{tp}/requirements-private.txt", requirements_at_sign
             )
-
-            rq.rqf(f"{tp}/requirements.txt", f"{tp}/requirements-private.txt")
+            runner.invoke(
+                rq.rqf,
+                [
+                    "--filename1",
+                    f"{tp}/requirements.txt",
+                    "--filename2",
+                    f"{tp}/requirements-private.txt",
+                ],
+            )
 
             with open(Path(f"{tp}/requirements.txt")) as file_object:
                 received = file_object.readlines()
