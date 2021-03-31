@@ -20,27 +20,6 @@ flake8==3.9.0
 """
 
 
-def write_file(filepath, filename, information):
-    """
-    Write a text file.
-
-    Used here to save known files to test the package behavior.
-
-    Parameters
-    ----------
-    filepath : str
-        Path where the file will be written.
-
-    filename : str
-        Name of the file.
-
-    information : str
-        Information to be written.
-    """
-    with open(Path(f"{filepath}/{filename}"), "w") as file_object:
-        file_object.write(information)
-
-
 def convert_str_list(my_string):
     """
     Function to convert from string to list.
@@ -66,8 +45,10 @@ class RequirementsFilterTest(unittest.TestCase):
 
     def test_rqf_two_files(self):
         with tempfile.TemporaryDirectory() as tp:
-            write_file(tp, "requirements.txt", requirements)
-            write_file(tp, "requirements-private.txt", requirements_at_sign)
+            rq.write_file(f"{tp}/requirements.txt", requirements)
+            rq.write_file(
+                f"{tp}/requirements-private.txt", requirements_at_sign
+            )
 
             rq.rqf(f"{tp}/requirements.txt", f"{tp}/requirements-private.txt")
 
@@ -113,6 +94,13 @@ class RequirementsFilterTest(unittest.TestCase):
         input_list = convert_str_list(requirements_at_sign)
         received = rq.create_set(input_list, "==")
         self.assertEqual(answer_set, received)
+
+    def test_remove_common_elements_equal_sign(self):
+        input_list = convert_str_list(requirements)
+        my_input_set = set(["project"])
+        received = rq.remove_common_elements(input_list, my_input_set)
+        answer = ["flake8==3.9.0"]
+        self.assertEqual(answer, received)
 
 
 if __name__ == "__main__":

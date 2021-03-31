@@ -7,39 +7,42 @@ def rqf(file1="requirements.txt", file2="requirements-private.txt"):
     private_txt = open_file(file2)
 
     at_sign_set = create_set(private_txt, "@")
-
     requirements_without_at_sign = remove_common_elements(
-        requirements, at_sign_set, "@"
-    )
-    requirements_without_equal_sign = remove_common_elements(
-        requirements_without_at_sign, at_sign_set, "=="
+        requirements, at_sign_set
     )
 
     # the file1 will be overwritten
-    write_file(file1, requirements_without_equal_sign)
+    write_file(file1, requirements_without_at_sign)
 
 
-def remove_common_elements(requirements, private_set, delimiter="@"):
+def remove_common_elements(package_list, remove_set):
     """
-    Remove the common elements between requirements and private_set.
+    Remove the common elements between package_list and remove_set.
 
     Note that this is *not* an XOR operation: packages that do not
-    exist in requirements are not included.
+    exist in remove_set (but exists in remove_set) are not included.
 
     Parameters
     ----------
-    requirements : str
-        String with the packages from the requirements file.
+    package_list : list
+        List with string elements representing the packages from the
+        requirements file. Assumes that the list has "==" to denote
+        package versions.
 
-    private_set : set
+    remove_set : set
         Set with the names of packages to be removed from requirements.
+
+    Returns
+    -------
+    list
+        List of packages not presented in remove_set.
     """
-    requirements_without_private = []
-    for package in requirements:
-        package_at_sign = package.split(delimiter)[0].strip()
-        if package_at_sign not in private_set:
-            requirements_without_private.append(package)
-    return requirements_without_private
+    package_not_in_remove_set = []
+    for package in package_list:
+        package_name = package.split("==")[0].strip()
+        if package_name not in remove_set:
+            package_not_in_remove_set.append(package)
+    return package_not_in_remove_set
 
 
 def open_file(filename):
@@ -95,7 +98,7 @@ def create_set(package_list, delimiter):
     return package_set
 
 
-def write_file(file1, requirements_without_private):
+def write_file(filename, information):
     """
     Write string information into a file.
 
@@ -103,12 +106,13 @@ def write_file(file1, requirements_without_private):
     ----------
     file1 : str
         Name of the file where the information will be saved.
+        It should have the filepath and the file extension (.txt).
 
-    requirements_without_private : str
+    information : str
         Information to be saved.
     """
-    with open(file1, "w") as file_save:
-        for line in requirements_without_private:
+    with open(filename, "w") as file_save:
+        for line in information:
             file_save.write(line)
 
 
