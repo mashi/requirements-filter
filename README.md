@@ -5,8 +5,7 @@
 
 
 # Description
-This package filters the packages between two files. It was created as an exercise
-about python packages, but I hope it can help someone else.
+Removes private packages from a general `requirements.txt` file.
 
 An example of usage is installing private packages. My usual workflow consists of
 1. changes in the source code,
