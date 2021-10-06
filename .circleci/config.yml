@@ -5,7 +5,7 @@ jobs:
 
   test:
     docker:
-      - image: python:3.9-buster
+      - image: python:3.10-buster
     steps:
       # adicionar o token do codecov em uma environment variable do circleci chamada de CODECOV_TOKEN
       - checkout
@@ -20,7 +20,7 @@ jobs:
 
   build:
     docker:
-      - image: python:3.9-buster
+      - image: python:3.10-buster
     steps:
       - checkout
       - run:
@@ -40,7 +40,7 @@ jobs:
 
   deploy:
     docker:
-      - image: python:3.9-buster
+      - image: python:3.10-buster
     steps:
       - checkout
       - attach_workspace:
