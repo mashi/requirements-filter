@@ -15,7 +15,7 @@ docutils==0.17.1
 filelock==3.3.0
 flake8==3.9.2
 identify==2.3.0
-idna==3.2
+idna==3.3
 importlib-metadata==4.8.1
 jeepney==0.7.1
 keyring==23.2.1
