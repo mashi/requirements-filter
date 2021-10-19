@@ -2,6 +2,12 @@
   "extends": [
     "config:base"
   ],
+  "packageRules": [
+    {
+      "matchPackagePatterns": [ "flake8", "pycodestyle", "pyflakes" ],
+      "groupName": "linter"
+    }
+  ],
   "branchConcurrentLimit": 10,
   "prConcurrentLimit": 10,
   "automerge": true,
