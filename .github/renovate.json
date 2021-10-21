@@ -5,6 +5,7 @@
   "packageRules": [
     {
       "matchPackagePatterns": [ "flake8", "pycodestyle", "pyflakes" ],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest", "major"],
       "groupName": "linter"
     }
   ],
