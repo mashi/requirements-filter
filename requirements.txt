@@ -16,7 +16,7 @@ filelock==3.3.2
 flake8==4.0.1
 identify==2.3.5
 idna==3.3
-importlib-metadata==4.8.1
+importlib-metadata==4.8.2
 jeepney==0.7.1
 keyring==23.2.1
 mccabe==0.6.1
