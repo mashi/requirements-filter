@@ -14,7 +14,7 @@ distlib==0.3.3
 docutils==0.18
 filelock==3.4.0
 flake8==4.0.1
-identify==2.3.6
+identify==2.4.0
 idna==3.3
 importlib-metadata==4.8.2
 jeepney==0.7.1
