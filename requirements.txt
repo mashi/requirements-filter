@@ -9,7 +9,7 @@ chardet==4.0.0
 click==8.0.4
 colorama==0.4.4
 coverage==6.3.2
-cryptography==36.0.1
+cryptography==36.0.2
 distlib==0.3.4
 docutils==0.18.1
 filelock==3.6.0
