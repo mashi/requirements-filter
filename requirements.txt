@@ -11,7 +11,7 @@ colorama==0.4.5
 coverage==6.4.1
 cryptography==37.0.4
 distlib==0.3.4
-docutils==0.18.1
+docutils==0.19
 filelock==3.7.1
 flake8==4.0.1
 identify==2.5.1
