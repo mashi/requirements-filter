@@ -12,7 +12,7 @@ coverage==6.5.0
 cryptography==38.0.4
 distlib==0.3.6
 docutils==0.19
-filelock==3.8.0
+filelock==3.8.1
 flake8==4.0.1
 identify==2.5.9
 idna==3.4
