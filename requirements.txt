@@ -30,7 +30,7 @@ pre-commit==3.3.3
 pycodestyle==2.8.0
 pycparser==2.21
 pyflakes==2.4.0
-Pygments==2.15.1
+Pygments==2.16.1
 pyparsing==3.1.1
 PyYAML==6.0.1
 readme-renderer==40.0
