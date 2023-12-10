@@ -26,7 +26,7 @@ packaging==23.2
 pathspec==0.12.0
 pep517==0.13.1
 pkginfo==1.9.6
-pre-commit==3.5.0
+pre-commit==3.6.0
 pycodestyle==2.8.0
 pycparser==2.21
 pyflakes==2.4.0
