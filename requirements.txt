@@ -1,7 +1,7 @@
 appdirs==1.4.4
 black==24.2.0
 bleach==6.1.0
-build==1.0.3
+build==1.1.1
 certifi==2024.2.2
 cffi==1.16.0
 cfgv==3.4.0
