@@ -3,7 +3,7 @@ black==24.8.0
 bleach==6.1.0
 build==1.2.1
 certifi==2024.7.4
-cffi==1.16.0
+cffi==1.17.0
 cfgv==3.4.0
 chardet==5.2.0
 click==8.1.7
