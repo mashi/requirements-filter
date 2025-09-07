@@ -34,7 +34,7 @@ Pygments==2.19.2
 pyparsing==3.2.3
 PyYAML==6.0.2
 readme-renderer==44.0
-regex==2025.8.29
+regex==2025.9.1
 requests==2.32.5
 requests-toolbelt==1.0.0
 rfc3986==2.0.0
