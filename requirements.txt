@@ -38,7 +38,7 @@ regex==2025.9.1
 requests==2.32.5
 requests-toolbelt==1.0.0
 rfc3986==2.0.0
-SecretStorage==3.3.3
+SecretStorage==3.4.0
 six==1.17.0
 toml==0.10.2
 tqdm==4.67.1
