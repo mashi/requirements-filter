@@ -46,6 +46,6 @@ twine==6.2.0
 typed-ast==1.5.5
 typing-extensions==4.15.0
 urllib3==2.5.0
-virtualenv==20.35.1
+virtualenv==20.35.3
 webencodings==0.5.1
 zipp==3.23.0
