@@ -28,7 +28,7 @@ pep517==0.13.1
 pkginfo==1.12.1.2
 pre-commit==4.5.1
 pycodestyle==2.8.0
-pycparser==2.23
+pycparser==3.0
 pyflakes==2.4.0
 Pygments==2.19.2
 pyparsing==3.3.2
