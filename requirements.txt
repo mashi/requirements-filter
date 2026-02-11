@@ -13,7 +13,7 @@ cryptography==46.0.5
 distlib==0.4.0
 docutils==0.22.4
 filelock==3.20.3
-flake8==4.0.1
+flake8==7.3.0
 identify==2.6.16
 idna==3.11
 importlib-metadata==8.7.1
@@ -27,9 +27,9 @@ pathspec==1.0.4
 pep517==0.13.1
 pkginfo==1.12.1.2
 pre-commit==4.5.1
-pycodestyle==2.8.0
+pycodestyle==2.14.0
 pycparser==3.0
-pyflakes==2.4.0
+pyflakes==3.4.0
 Pygments==2.19.2
 pyparsing==3.3.2
 PyYAML==6.0.3
