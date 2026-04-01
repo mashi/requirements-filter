@@ -35,7 +35,7 @@ pyparsing==3.3.2
 PyYAML==6.0.3
 readme-renderer==44.0
 regex==2026.3.32
-requests==2.33.0
+requests==2.33.1
 requests-toolbelt==1.0.0
 rfc3986==2.0.0
 SecretStorage==3.5.0
