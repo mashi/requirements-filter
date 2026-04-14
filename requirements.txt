@@ -48,4 +48,4 @@ typing-extensions==4.15.0
 urllib3==2.6.3
 virtualenv==21.2.3
 webencodings==0.5.1
-zipp==3.23.0
+zipp==3.23.1
